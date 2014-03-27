@@ -29,7 +29,7 @@
     'author': 'Coop. Trab. Moldeo Interactive Lim.',
     'website': 'http://www.moldeointeractive.com.ar',
     'depends': [
-	'sale','account'
+	'sale','account','point_of_sale'
     ],
     'init_xml': [
     ],
