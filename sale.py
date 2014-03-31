@@ -34,6 +34,8 @@ class sale_order(osv.osv):
         if obj.state in ['progress','manual']:
 		total_check = obj.partner_id.credit_limit - (obj.amount_total + obj.partner_id.credit)
 		if total_check < 0:
+                        raise osv.except_osv('Error','El cliente supera su limite de credito por '+\
+                                str(total_check*(-1) )+'$')
 			return False
         return True
 

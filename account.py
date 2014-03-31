@@ -34,6 +34,8 @@ class account_invoice(osv.osv):
         if obj.state in ['proforma','proforma2','open']:
 		total_check = obj.partner_id.credit_limit - obj.partner_id.credit
 		if total_check < 0:
+                        raise osv.except_osv('Error','El cliente supera su limite de credito por '+\
+                                str(total_check*(-1) )+'$')
 			return False
         return True
 
