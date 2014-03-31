@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+	<record model="ir.ui.view" id="journal_form_check_credit_view">
+	    <field name="name">account.journal.check_credit</field>
+	    <field name="model">account.journal</field>
+	    <field name="inherit_id" ref="point_of_sale.view_account_journal_pos_user_form" />
+	    <field name="arch" type="xml">
+	        <data>
+                      <field name="self_checkout_payment_method" position="after">
+				<field name="check_credit_limit" />
+		      </field>
+	        </data> 
+	    </field>
+	</record>
+
+    </data>
+</openerp>

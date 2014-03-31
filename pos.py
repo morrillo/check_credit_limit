@@ -30,17 +30,18 @@ class pos_order(osv.osv):
     _name = "pos.order"
 
     def _check_credit_limit(self, cr, uid, ids, context=None):
-        obj = self.browse(cr, uid, ids[0], context=context)
-        if obj.state in ['paid']:
-		total_check = obj.partner_id.credit_limit - (obj.partner_id.credit + obj.amount_total)
-		if total_check < 0:
-			raise osv.except_osv('Error','El cliente supera su limite de credito por '+\
-				str(total_check*(-1) )+'$')
-			return False
+	obj = self.browse(cr,uid,ids[0])
+	if obj.state == 'paid':
+		if obj.statement_ids[0].journal_id.check_credit_limit:
+			total_check = obj.partner_id.credit_limit - (obj.partner_id.credit + obj.amount_total)
+ 		        if total_check < 0:
+				raise osv.except_osv('Error','El cliente supera su limite de credito por '+\
+				 	str(total_check*(-1) )+'$')
+			 	return False
         return True
 
     _constraints = [
-        (_check_credit_limit, 'La compra supera el límite de crédito del cliente.', ['state']),
+        (_check_credit_limit, 'La compra supera el límite de crédito del cliente.', ['journal_id']),
     ]
 
 

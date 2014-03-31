@@ -24,6 +24,22 @@ import logging
 
 _logger = logging.getLogger(__name__)
 
+class account_journal(osv.osv):
+    """ Account Journal """
+    _inherit = "account.journal"
+    _name = "account.journal"
+
+    _columns = {
+	'check_credit_limit': fields.boolean('Chequear limite de credito en TPV'),
+	}
+
+    _default = {
+	'check_credit_limit': True,
+	}
+
+account_journal()
+
+
 class account_invoice(osv.osv):
     """ Account Invoice """
     _inherit = "account.invoice"

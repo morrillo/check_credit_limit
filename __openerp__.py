@@ -34,8 +34,8 @@
     'init_xml': [
     ],
     'data': [],
-    'update_xml': [
-    ],
+    # 'update_xml': [],
+    'update_xml': ['account_view.xml'],
     'demo_xml': [
     ],
     'installable': True,
